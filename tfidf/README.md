@@ -73,11 +73,11 @@ What are the Documents?
 Okay, so that's our vocabulary (first attempt, at least).  We also need to compute statistics
 for tf-idf.  We can't do everything at once, so we'll need to do two
 passes over the data.  The first pass will count how many times we see
-each word in the training set (using the function ``train_seen``), and
+each word in the training set, and
 the second pass will compute term and document frequencies (using the
 function ``scan_document``).  In between those two passes, we'll
 finalize our vocabulary to decide the integer lookup of all of our
-words (the ``finalize_vocab`` function).
+words (the ``finalize`` function in the Vocab class).
 
 Then, you should have everything you need to compute---for a new
 document or query---the tf-idf representation in the ``doc_tfidf``
@@ -147,6 +147,11 @@ If you've stored how often words appear in every document during
 frequencies.
 
 
+train (first time)
+-----
+You will need update the train function to update your vocabulary and to keep track of how many times words appear in documents.
+
+
 `__call__`
 -------------
 
@@ -163,6 +168,7 @@ is already done for you (assuming you've completed `inv_docfreq` already).
 Then you'll need to go through the rows in `self._doc_vectors` and find the
 closest row.  Call whatever the closest is `best` and return the appropriate
 metadata.  This is implemented for you already.
+
 
 > ⚠️After you've done this, your code should work with the whitespace
 > tokenizer and give you halfway decent results.  Play around with
@@ -193,6 +199,11 @@ add_from_merge
 
 I added another function to the Vocab class to make things easier to
 keep track of new tokens.  (This is optional).
+
+train (second time)
+-----------
+
+I'm listing train again because you'll need to update it once you've done BPE tokenization.
 
 
 Running Your Code
@@ -472,15 +483,15 @@ submitting a test that covers it).
 
 1. Submissions will be made on Gradescope.
 
-2. You will submit a zip file containing your code
-(toyttokenizer_guesser.py) and the model files (if you go beyond the "good
-enough" standard). If you check your code against your own test cases,
+2. You will submit toyttokenizer_guesser.py. If you check your code against your own test cases,
 you can add the file (which will be like test.py) containing your own
 test cases in the zip too.
 
 The code will run against the public test cases (the ones you can already see
 in the given test.py file) on the server and you can see those results. You
 should make sure you pass these cases before the submission deadline.
+
+For the analysis extra credit, upload a PDF of your analysis.
 
 # Hints
 
